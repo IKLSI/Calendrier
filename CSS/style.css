@@ -1,0 +1,304 @@
+/* Personnalisation sélecteur universel */
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	margin: auto;
+	font-style: bold;
+	user-select: none;
+}
+
+/* Personnalisation en-tête */
+
+header {
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	text-align: center;
+	box-shadow: none;
+}
+
+.event-form {
+	display: none;
+}
+
+.event-form.show {
+	display: flex;
+}
+
+input[type="date"] {
+	width: 30%;
+	margin-right: 20px;
+}
+
+input[type="text"] {
+	width: 30%;
+	margin-right: 20px;
+}
+
+.event-form button {
+	width: 30%;
+	height: 40px;
+}
+
+body {
+	margin-top: 350px;
+	font-family: 'Roboto',sans-serif;
+	background-color: #f2f2f2;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+ul {
+	list-style-type: none;
+}
+
+/* Personnalisation calendrier */
+
+/* Personnalisation en-tête calendrier */
+
+.mois {
+	width: 100%;
+	padding: 70px 25px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	text-align: center;
+	background-color: #4285f4;
+}
+
+.mois .precedent {
+	float: left;
+	padding-top: 10px;
+	cursor: pointer;
+}
+
+.mois .suivant {
+	float: right;
+	padding-top: 10px;
+	cursor: pointer;
+}
+
+.mois ul {
+	margin: 0;
+	padding: 0;
+}
+
+.mois ul li {
+	text-transform: uppercase;
+	font-size: 20px;
+	font-weight: 900;
+	letter-spacing: 3px;
+	color: white;
+}
+
+/* Personnalisation corps calendrier */
+
+/* Personnalisation jours de la semaine */
+
+.jours_Semaine {
+	margin: 0;
+	padding: 10px 0;
+	text-align: center;
+	background-color: #ddd;
+}
+
+.jours_Semaine li {
+	display: inline-block;
+	width: 13%;
+	text-align: center;
+	color: #666;
+}
+
+/* Personnalisation jours du mois */
+
+.jours_Mois {
+	width: 800px;
+	height: 300px;
+	margin: 0;
+	padding: 10px 0;
+	border: 1px solid #ccc;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	background-color: lightgray;
+}
+
+.jours_Mois li {
+	display: inline-block;
+	width: 14%;
+	margin-bottom: 5px;
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+	color: #777;
+}
+
+/* Personnalisation jours ajouté par l'utilisateur */
+
+.event-day {
+	font-size: 0.8em;
+}
+
+.event {
+	padding: 8px;
+	border-radius: 4px;
+	color: #fff;
+	background-color: #ff6f00;
+	cursor: pointer;
+}
+
+.event:hover {
+	background-color: #e65100;
+}
+
+/* Personnalisation animation de défilement grâce au flèche */
+
+.month li {
+	transition: all 0.5s ease-in-out;
+}
+
+.animate-out {
+	opacity: 0;
+	transform: translateX(-100%);
+}
+
+.month-name {
+	opacity: 0;
+}
+
+/* Personnalisation formulaire */
+
+.formulaire {
+	display: flex;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	max-width: 800px;
+	border-radius: 10px;
+	overflow: hidden;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+	max-width: 40%;
+}
+
+.form-container {
+	flex: 1;
+	padding: 40px;
+}
+
+h2 {
+	margin-bottom: 20px;
+	font-size: 24px;
+}
+
+input {
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+button {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	color: #fff;
+	background-color: #007bff;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #0056b3;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 720px) {
+
+	body {
+		margin-top: 600px;
+	}
+
+	.event-form button {
+		padding: 0px;
+	}
+
+	.mois {
+		padding: 40px 10px;
+	}
+
+	.jours_Semaine li,
+	.jours_Mois li {
+		width: 12.5%;
+		font-size: 14px;
+	}
+
+	.jours_Mois {
+		width: 100%;
+		height: auto;
+	}
+
+	.formulaire {
+		flex-direction: column;
+		align-items: center;
+		margin-top: 50px;
+		margin-bottom: 50px;
+	}
+
+	.logo {
+		max-width: 60%;
+	}
+
+	.form-container {
+		padding: 20px;
+		width: 80%;
+	}
+
+	.jours_Mois li {
+		width: 16.66%;
+		font-size: 12px;
+	}
+
+	.mois ul li {
+		font-size: 18px;
+	}
+
+	.event-form input,
+	.event-form button {
+		width: 100%;
+	}
+
+	.event-day {
+		font-size: 12px;
+	}
+
+	.event {
+		padding: 6px;
+		font-size: 12px;
+	}
+
+	.mois .precedent,
+	.mois .suivant {
+		padding-top: 5px;
+		font-size: 20px;
+	}
+
+	.donnees_Actuelle {
+		font-size: 18px;
+	}
+};

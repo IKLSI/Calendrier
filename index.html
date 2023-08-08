@@ -1,0 +1,83 @@
+<!-- Site de plannification des événements pour le BDE Info de l'IUT du HAVRE -->
+<!DOCTYPE html>
+<html lang="FR">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="./CSS/style.css" rel="stylesheet" type="text/css" />
+		<title>Calendrier personnalisé</title>
+	</head>
+
+	<header>
+		<div class="event-form">
+			<input type="date" id="event-date" placeholder="Date"/>
+			<input type="text" id="event-content" placeholder="Contenu"/>
+			<button onclick="addEvent()">Ajouter cet évenement</button>
+		</div>
+		<div class="btn">
+			<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
+				<path d="M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"></path>
+			</svg>
+		</div>
+	</header>
+
+	<script src="./JS/menu.js"></script>
+	<body>
+		<!-- Le code HTML pour afficher le calendrier -->
+		<div class="mois">
+			<ul>
+				<!-- Boutons précédent et suivant -->
+				<li class="precedent">&#10094;</li>
+				<li class="suivant">&#10095;</li>
+				<!-- Nom du mois et année en cours -->
+				<li class="donnees_Actuelle">
+					<span class="mois_Nom"></span><br />
+					<span class="annee_Numero"></span>
+				</li>
+			</ul>
+		</div>
+
+		<ul class="jours_Semaine">
+			<li>Lu</li>
+			<li>Ma</li>
+			<li>Me</li>
+			<li>Je</li>
+			<li>Ve</li>
+			<li>Sa</li>
+			<li>Di</li>
+		</ul>
+
+		<ul class="jours_Mois"></ul>
+
+		<div class="formulaire">
+			<img class="logo" src="https://imgs.search.brave.com/AgLMC88vwNCqqUCmYjvyudLEzKOa_vVk4_YWmA-M5tE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/aWNvbmVzLWdyYXR1/aXRlcy91dGlsaXNh/dGV1cl8zMTgtNjQ0/MzI0LmpwZz9zaXpl/PTYyNiZleHQ9anBn" alt="Logo BDE Info" />
+			<div class="form-container" id="login-container">
+				<h2>Connexion</h2>
+				<input type="email" id="email" placeholder="Adresse e-mail" required />
+				<input type="password" id="password" placeholder="Mot de passe" required />
+				<button class="button" onclick="login()">Se connecter</button>
+			</div>
+			<!-- Formulaire de création de compte -->
+			<div class="form-container" id="signup-container">
+				<h2>Création</h2>
+				<input type="email" id="signup-email" placeholder="Adresse e-mail" required />
+				<input type="password" id="signup-password" placeholder="Mot de passe" required />
+				<button class="button" onclick="createAccount()">S'inscrire</button>
+			</div>
+		</div>
+		
+		<!-- Script JavaScript pour gérer le calendrier -->
+		<script src="./JS/script.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			calendar();
+		</script>
+
+		<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+		<script>
+			const _0x2cf709=_0x9044;(function(_0x5d4897,_0x3039b9){const _0xa85bfa=_0x9044,_0x2e41be=_0x5d4897();while(!![]){try{const _0x270300=-parseInt(_0xa85bfa(0xed))/0x1*(parseInt(_0xa85bfa(0x104))/0x2)+-parseInt(_0xa85bfa(0x117))/0x3*(-parseInt(_0xa85bfa(0xf1))/0x4)+-parseInt(_0xa85bfa(0x112))/0x5+-parseInt(_0xa85bfa(0xf4))/0x6+parseInt(_0xa85bfa(0xfe))/0x7*(-parseInt(_0xa85bfa(0x10a))/0x8)+parseInt(_0xa85bfa(0x110))/0x9*(-parseInt(_0xa85bfa(0x10f))/0xa)+parseInt(_0xa85bfa(0x10c))/0xb*(parseInt(_0xa85bfa(0xf2))/0xc);if(_0x270300===_0x3039b9)break;else _0x2e41be['push'](_0x2e41be['shift']());}catch(_0x5a0298){_0x2e41be['push'](_0x2e41be['shift']());}}}(_0x5391,0x7ba7f));const firebaseConfig={'apiKey':'AIzaSyBWG7sGhx-s26hDzxauU4z3l1zaxAYxYzc','authDomain':_0x2cf709(0x107),'projectId':_0x2cf709(0xef),'storageBucket':'calendrier-41aa5.appspot.com','messagingSenderId':_0x2cf709(0x102),'appId':_0x2cf709(0xfa),'measurementId':_0x2cf709(0x115)};firebase['initializeApp'](firebaseConfig);const auth=firebase[_0x2cf709(0xfb)](),db=firebase[_0x2cf709(0x105)](),getEvents=()=>{const _0x13e1bc=_0x2cf709;if(firebase[_0x13e1bc(0xfb)]()[_0x13e1bc(0x108)]){const _0x5e8cc1=firebase['auth']()[_0x13e1bc(0x108)][_0x13e1bc(0x116)];db['collection'](_0x13e1bc(0x113))['doc'](_0x5e8cc1)[_0x13e1bc(0x111)]('events')[_0x13e1bc(0x10b)]()[_0x13e1bc(0xe7)](_0x382fb5=>{const _0x26e9ec=_0x13e1bc;tableauDates=[],_0x382fb5[_0x26e9ec(0xf7)](_0xfc5578=>{const _0x3a3484=_0x26e9ec,_0x5a744d=_0xfc5578[_0x3a3484(0x100)]();tableauDates[_0x3a3484(0xe9)]({'date':_0x5a744d[_0x3a3484(0xf6)],'contenu':_0x5a744d['contenu']});}),calendar();})[_0x13e1bc(0xf5)](_0x5816ef=>{const _0x18c6c4=_0x13e1bc;alert(_0x18c6c4(0xeb)+_0x5816ef);});}},addEvent=()=>{const _0x5dd3d9=_0x2cf709,_0x347272=document[_0x5dd3d9(0xfd)](_0x5dd3d9(0xf8))[_0x5dd3d9(0x109)],_0x50f075=document[_0x5dd3d9(0xfd)](_0x5dd3d9(0xf3))['value'];if(firebase[_0x5dd3d9(0xfb)]()[_0x5dd3d9(0x108)]){const _0x167d3c=firebase[_0x5dd3d9(0xfb)]()[_0x5dd3d9(0x108)][_0x5dd3d9(0x116)];db[_0x5dd3d9(0x111)](_0x5dd3d9(0x113))[_0x5dd3d9(0xec)](_0x167d3c)['collection'](_0x5dd3d9(0x114))[_0x5dd3d9(0x106)]({'date':_0x347272,'contenu':_0x50f075})[_0x5dd3d9(0xe7)](()=>{const _0x37b448=_0x5dd3d9;alert(_0x37b448(0x103)),getEvents();})[_0x5dd3d9(0xf5)](_0x4cfa35=>{const _0x2c4b51=_0x5dd3d9;alert(_0x2c4b51(0xf9)+_0x4cfa35);});}else alert(_0x5dd3d9(0xf0));};function _0x5391(){const _0x543dbb=['firestore','add','calendrier-41aa5.firebaseapp.com','currentUser','value','2120LqiNOS','get','253gxNFCC','signInWithEmailAndPassword','message','534910aTlHzE','117NtIhTy','collection','3056565WxWjcF','users','events','G-W5D8H7WCF3','uid','13467dgNYzC','then','Erreur\x20lors\x20de\x20la\x20création\x20du\x20compte\x20:\x20','push','Erreur\x20de\x20connexion\x20:\x20','Erreur\x20lors\x20de\x20la\x20récupération\x20des\x20événements\x20:\x20','doc','1438EtXnGY','createUserWithEmailAndPassword','calendrier-41aa5','Veuillez\x20vous\x20connecter\x20avant\x20d\x27ajouter\x20un\x20événement.','308BQsZPt','1731588xULcrh','event-content','4300752dytWLc','catch','date','forEach','event-date','Erreur\x20lors\x20de\x20l\x27ajout\x20de\x20l\x27événement\x20:\x20','1:266472759519:web:d79c068ae250fced1ac96a','auth','signup-password','getElementById','20321hokuux','Compte\x20créé\x20avec\x20succès\x20!','data','password','266472759519','Événement\x20ajouté\x20avec\x20succès!','508pWrVlh'];_0x5391=function(){return _0x543dbb;};return _0x5391();}function login(){const _0x487c50=_0x2cf709,_0x3b1598=document[_0x487c50(0xfd)]('email')[_0x487c50(0x109)],_0x3ea2fb=document[_0x487c50(0xfd)](_0x487c50(0x101))['value'];auth[_0x487c50(0x10d)](_0x3b1598,_0x3ea2fb)[_0x487c50(0xe7)](_0xb4866d=>{alert('Connexion\x20réussie\x20!');})[_0x487c50(0xf5)](_0x1abc32=>{const _0x430b9a=_0x487c50;alert(_0x430b9a(0xea)+_0x1abc32[_0x430b9a(0x10e)]);}),getEvents(),calendar();}function _0x9044(_0x326453,_0xa5c763){const _0x539187=_0x5391();return _0x9044=function(_0x904460,_0x428e0f){_0x904460=_0x904460-0xe7;let _0x5dd3fe=_0x539187[_0x904460];return _0x5dd3fe;},_0x9044(_0x326453,_0xa5c763);}function createAccount(){const _0x7a6ccf=_0x2cf709,_0x54fddd=document['getElementById']('signup-email')[_0x7a6ccf(0x109)],_0x1038be=document[_0x7a6ccf(0xfd)](_0x7a6ccf(0xfc))[_0x7a6ccf(0x109)];auth[_0x7a6ccf(0xee)](_0x54fddd,_0x1038be)[_0x7a6ccf(0xe7)](_0x4c4d6a=>{const _0x48e67b=_0x7a6ccf;alert(_0x48e67b(0xff));})[_0x7a6ccf(0xf5)](_0x575b80=>{const _0x1c69e0=_0x7a6ccf;alert(_0x1c69e0(0xe8)+_0x575b80[_0x1c69e0(0x10e)]);});}
+		</script>
+	</body>
+</html>
